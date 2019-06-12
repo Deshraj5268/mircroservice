@@ -1,5 +1,6 @@
 package deshraj.chatapplication.controller;
 
+import deshraj.chatapplication.common.Constants;
 import deshraj.chatapplication.dto.CommentsDto;
 import deshraj.chatapplication.dto.PostsDto;
 import deshraj.chatapplication.dto.io.CommentsInput;
@@ -13,12 +14,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
-@RequestMapping(path = "/chats/", produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-public class PostController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(PostController.class);
+@RequestMapping(path = Constants.BASE_URL+"/chats/", produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+public class ChatController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChatController.class);
 
     @Autowired
     private PostsService postsService;

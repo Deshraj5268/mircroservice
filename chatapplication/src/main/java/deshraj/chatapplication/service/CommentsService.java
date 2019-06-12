@@ -1,6 +1,7 @@
 
 package deshraj.chatapplication.service;
 
+import deshraj.chatapplication.configuration.ApplicationException;
 import deshraj.chatapplication.dto.CommentsDto;
 import deshraj.chatapplication.dto.PostsDto;
 import deshraj.chatapplication.dto.io.CommentsInput;
@@ -43,17 +44,17 @@ public class CommentsService {
 
     public CommentsDto getCommentService(Long commentId){
         CommentsDto commentsDto = null;
-        try {
+       // try {
             Optional<CommentsEntity> commentsEntity = commentsRepository.findById(commentId);
             if (!commentsEntity.isPresent()) {
-                throw new Exception("Id does not exist ");
+                throw new ApplicationException("Id does not exist ");
             }
             CommentsEntity commentsE = commentsEntity.get();
             LOGGER.error("commentResponse payload {} :", commentsE);
             commentsDto = Converter.convertToEntity(commentsE, CommentsDto.class);
-        }catch (Exception ex){
+        /*}catch (Exception ex){
             LOGGER.error("exception  :",ex);
-        }
+        }*/
         return commentsDto;
     }
 }
